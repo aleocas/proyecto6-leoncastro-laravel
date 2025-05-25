@@ -1,61 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📰 Proyecto 6: API RESTful de Blog con PHP y Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 Descripción del proyecto
 
-## About Laravel
+Este proyecto consiste en el diseño e implementación de una **API RESTful HTTP** para la gestión de artículos de un blog y sus comentarios asociados. La aplicación permite realizar operaciones CRUD tanto sobre los **artículos** como sobre sus **comentarios**, manteniendo una estructura clara de relaciones entre entidades.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El desarrollo se ha llevado a cabo en **dos versiones** completamente funcionales:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 🧱 **Versión 1**: Implementación en **PHP puro** - no subida
+- 🧱 **Versión 2**: Implementación en **Laravel**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Ambas versiones permiten interactuar con la API mediante herramientas como **HTTPie** o **Guzzle**, devolviendo respuestas estructuradas en formato **JSON**, 
+cumpliendo los estándares REST.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧩 Modelo de datos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 📄 Artículo (`articulos`)
+- `id`: Identificador único
+- `titulo`: Título del artículo
+- `contenido`: Cuerpo del artículo
+- `fecha_publicacion`: Fecha y hora de publicación (ISO 8601)
+- `autor`: Nombre del autor
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 💬 Comentario (`comentarios`)
+- `id`: Identificador único
+- `contenido`: Texto del comentario
+- `fecha_publicacion`: Fecha y hora de publicación
+- `autor`: Nombre del autor del comentario
+- `articulo_id`: Clave foránea (asociado a un artículo)
 
-## Laravel Sponsors
+> Relación: **1 artículo → N comentarios**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🔧 Tecnologías utilizadas
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+- PHP 8.x
+- Laravel 10.x
+- MySQL / MariaDB
+- Guzzle (cliente HTTP)
+- HTTPie (para pruebas de terminal)
+- Composer
+- Artisan (para migraciones y seeders)
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🧪 Funcionalidades del servicio web
 
-## Code of Conduct
+### Artículos
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Método | Ruta                          | Acción                             |
+|--------|-------------------------------|------------------------------------|
+| GET    | `/articulos`                  | Ver todos los artículos            |
+| POST   | `/articulos`                  | Crear un nuevo artículo            |
+| GET    | `/articulos/{id}`             | Ver un artículo específico         |
+| PATCH  | `/articulos/{id}`             | Editar parcialmente un artículo    |
+| DELETE | `/articulos/{id}`             | Eliminar un artículo               |
 
-## Security Vulnerabilities
+### Comentarios
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+| Método | Ruta                                         | Acción                                     |
+|--------|----------------------------------------------|--------------------------------------------|
+| GET    | `/comentarios`                               | Ver todos los comentarios                  |
+| GET    | `/comentarios/{id}`                          | Ver un comentario específico               |
+| POST   | `/articulos/{id}/comentarios`                | Añadir un comentario a un artículo         |
+| GET    | `/articulos/{id}/comentarios`                | Ver comentarios de un artículo específico  |
+| PUT    | `/comentarios/{id}`                          | Editar completamente un comentario         |
+| DELETE | `/comentarios/{id}`                          | Eliminar un comentario                     |
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🧪 Pruebas con HTTPie
+
+# Ver todos los artículos
+https GET http://aleocas.alwaysdata.net/proyecto6/public/api/articulos
+
+# Crear un nuevo artículo
+https POST http://aleocas.alwaysdata.net/proyecto6/public/api/articulos \
+  titulo='Título de ejemplo' \
+  contenido='Contenido del artículo' \
+  fecha_publicacion='2023-03-15T08:00:00' \
+  autor='Nombre Autor'
+
+# Ver un artículo por ID
+https GET http://aleocas.alwaysdata.net/proyecto6/public/api/articulos/4
+
+# Ver todos los comentarios
+https GET http://aleocas.alwaysdata.net/proyecto6/public/api/comentarios
+
+# Añadir comentario a un artículo
+https POST http://aleocas.alwaysdata.net/proyecto6/public/api/articulos/6/comentarios \
+  contenido='Comentario nuevo' \
+  fecha_publicacion='2023-03-16T10:00:00' \
+  autor='Comentarista'
+
+# Ver comentarios de un artículo
+https GET http://aleocas.alwaysdata.net/proyecto6/public/api/articulos/6/comentarios
+
+# Editar comentario por completo
+https PUT http://aleocas.alwaysdata.net/proyecto6/public/api/comentarios/5 \
+  contenido='Comentario actualizado'
+
+# Eliminar comentario
+https DELETE http://aleocas.alwaysdata.net/proyecto6/public/api/comentarios/5
+
+# Eliminar artículo
+https DELETE http://aleocas.alwaysdata.net/proyecto6/public/api/articulos/4
