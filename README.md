@@ -1,29 +1,29 @@
-# 📰 Proyecto 6: API RESTful de Blog con PHP y Laravel
+# Proyecto 6: API RESTful de Blog con PHP y Laravel
 
-## 📌 Descripción del proyecto
+## Descripción del proyecto
 
 Este proyecto consiste en el diseño e implementación de una **API RESTful HTTP** para la gestión de artículos de un blog y sus comentarios asociados. La aplicación permite realizar operaciones CRUD tanto sobre los **artículos** como sobre sus **comentarios**, manteniendo una estructura clara de relaciones entre entidades.
 
 El desarrollo se ha llevado a cabo en **dos versiones** completamente funcionales:
 
-- 🧱 **Versión 1**: Implementación en **PHP puro** - no subida
-- 🧱 **Versión 2**: Implementación en **Laravel**
+- **Versión 1**: Implementación en **PHP puro** - no subida
+- **Versión 2**: Implementación en **Laravel**
 
 Ambas versiones permiten interactuar con la API mediante herramientas como **HTTPie** o **Guzzle**, devolviendo respuestas estructuradas en formato **JSON**, 
 cumpliendo los estándares REST.
 
 ---
 
-## 🧩 Modelo de datos
+## Modelo de datos
 
-### 📄 Artículo (`articulos`)
+### Artículo (`articulos`)
 - `id`: Identificador único
 - `titulo`: Título del artículo
 - `contenido`: Cuerpo del artículo
 - `fecha_publicacion`: Fecha y hora de publicación (ISO 8601)
 - `autor`: Nombre del autor
 
-### 💬 Comentario (`comentarios`)
+### Comentario (`comentarios`)
 - `id`: Identificador único
 - `contenido`: Texto del comentario
 - `fecha_publicacion`: Fecha y hora de publicación
@@ -34,7 +34,7 @@ cumpliendo los estándares REST.
 
 ---
 
-## 🔧 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - PHP 8.x
 - Laravel 10.x
@@ -46,7 +46,7 @@ cumpliendo los estándares REST.
 
 ---
 
-## 🧪 Funcionalidades del servicio web
+## Funcionalidades del servicio web
 
 ### Artículos
 
@@ -71,7 +71,7 @@ cumpliendo los estándares REST.
 
 ---
 
-## 🧪 Pruebas con HTTPie
+## Pruebas con HTTPie
 
 # Ver todos los artículos
 https GET http://aleocas.alwaysdata.net/proyecto6/public/api/articulos
